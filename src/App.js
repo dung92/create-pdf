@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     marginTop: "10px",
     fontSize: "11px",
     color: "#2B2B2B",
-    textAlign:"center"
+    textAlign: "center"
   },
   textFirstBottomCustom: {
     marginTop: "10px",
@@ -928,10 +928,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     width: "100%"
+  },
+  loopText: {
+    position: "absolute",
+    fontSize: "11px",
+    textAlign:"center",
+    top:"5%",
+    width:"100%",
+    display:"flex",
+    alignItems:"center",
+    justifyContent: "center:"
   }
 });
 
 function App() {
+  const firtName = 'Nguyen Trung Dung';
+  let minusMiniTangele = [];
+  if(firtName.replace(/ /g, '').split('').length < 24) {
+    for(let i =0; i< 22 - firtName.replace(/ /g, '').split('').length; i ++) {
+      const lenthArray = 22 - firtName.replace(/ /g, '').split('').length;
+      minusMiniTangele.push(lenthArray[i]);
+    }
+  }
   const MyDocument = () => (
     <Document>
       <Page size="A4" style={styles.page} wrap="nowrap">
@@ -1009,28 +1027,13 @@ function App() {
             </View>
             <View style={styles.mainInformation}>
               <Text style={styles.indentSecondInformation}>FirstName:</Text>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
-              <View style={styles.mininRectangle}></View>
+              {firtName.replace(/ /g, '').split('').map((item, index) =>
+                <View key={index} style={styles.mininRectangle}><Text style={styles.loopText}>{item}</Text></View>
+              )}
+              {minusMiniTangele.map((_,indexMinus) => 
+                <View key={indexMinus} style={styles.mininRectangle}></View>
+              )}
+              {firtName.replace(/ /g, '').split('').length}
               <View style={styles.mininRectangle}></View>
             </View>
             <View style={styles.mainInformation}>
@@ -1066,7 +1069,10 @@ function App() {
               (As per the birth Certificate)
             </Text>
           </View>
-          <View style={styles.customMainInformation}>
+          <Image style={styles.imageBorderFull} src={BorderImageFull} />
+        </View>
+        <View style={styles.sectionTitleCustom}>
+        <View style={styles.customMainInformation}>
             <Text style={styles.indentWithoutTopThirdInformation}>
               *Date of Birth:
             </Text>
@@ -1164,7 +1170,6 @@ function App() {
             </Text>
           </View>
         </View>
-        <Image style={styles.imageBorderFull} src={BorderImageFull} />
         <View style={styles.sectionTitleCustom}>
           <View>
             <Text style={styles.indentCustomParaphSecond}>
@@ -1397,6 +1402,7 @@ function App() {
               *Details of previous schooling:
             </Text>
           </View>
+          <Image style={styles.imageBorderFull} src={BorderImageFull} />
           <View>
             <View style={styles.mainInformationCustomTable}>
               <View style={styles.colSpan}>
@@ -1509,7 +1515,6 @@ function App() {
             </View>
           </View>
         </View>
-        <Image style={styles.imageBorderFull} src={BorderImageFull} />
         <View style={styles.sectionTitleCustom}>
           <View style={styles.paddingLeftTen}>
             <Text style={styles.indentCustomIndentInformation}>
@@ -1576,6 +1581,7 @@ function App() {
             <Text style={styles.indentCustomIndentInformation}>
               Has your child ever been subjected to any serious disciplinary procedure?
             </Text>
+            <Image style={styles.imageBorderFull} src={BorderImageFull} />
             <Text style={styles.indentCustomIndentInformation}>
               If yes, please describe.
             </Text>
@@ -1611,7 +1617,7 @@ function App() {
             </Text>
           </View>
         </View>
-        <Image style={styles.imageBorderFull} src={BorderImageFull} />
+        
         <View style={styles.sectionTitleCustom}>
           <Text style={styles.indentCustomIndentInformation}>
             Health information:
@@ -1992,7 +1998,7 @@ function App() {
             <View></View>
           </View>
         </View>
-        <Image style={styles.imageBorderFull} src={BorderImageFull} />
+      
         <View style={styles.sectionTitleCustom}>
           <Text style={styles.indentCustomIndentInformation}>
             Questions to the Parents:
@@ -2011,6 +2017,7 @@ function App() {
               <Text style={styles.textFinalInformationCustom}>No</Text>
             </View>
           </View>
+          <Image style={styles.imageBorderFull} src={BorderImageFull} />
           <Text style={styles.indentCustomIndentInformation}>
             b). What are the areas in which you as a parent could contribute to enrich school life in terms
           </Text>
@@ -2158,7 +2165,7 @@ function App() {
             </View>
           </View>
         </View>
-        <Image style={styles.imageBorderFull} src={BorderImageFull} />
+     
         <View style={styles.sectionTitleCustom}>
           <Text style={styles.mainTitle}>GUARDIAN'S DETAILS </Text>
           <Text style={styles.indentCustomIndentInformationPaddingLeft}>
@@ -2379,7 +2386,6 @@ function App() {
             <View></View>
           </View>
         </View>
-        <Image style={styles.imageBorderFull} src={BorderImageFull} />
         <View style={styles.sectionTitleCustom}>
           <Text style={styles.mainTitle}>KNOWING YOUR CHILD BETTER </Text>
           <View style={styles.mainInformation}>
@@ -2447,6 +2453,7 @@ function App() {
               <Text style={styles.textFinalInformationCustom}>Angry</Text>
             </View>
           </View>
+          <Image style={styles.imageBorderFull} src={BorderImageFull} />
           <Text style={styles.mainTitle}>CHILD'S SELF ASSESSMENT </Text>
           <Text style={styles.indentCustomIndentInformation}>
             This is a self-assessment to be done by all children above Grade III.The child must respond to the
@@ -2660,7 +2667,7 @@ function App() {
           </View>
           <View style={styles.endingSeftAssignment}></View>
         </View>
-        <Image style={styles.imageBorderFull} src={BorderImageFull} />
+        
         <View style={styles.sectionTitleCustom}>
           <Text style={styles.mainTitle}>DECLARATION FORM</Text>
           <Text style={styles.indentCustomIndentInformation}>
@@ -2703,6 +2710,7 @@ function App() {
           <Text style={styles.indentCustomIndentInformation}>
             cancelled.
           </Text>
+          <Image style={styles.imageBorderFull} src={BorderImageFull} />
           <Text style={styles.indentCustomIndentInformation}>
             That I will withdraw my ward from School if the Principal feels that his/her presence in the School is
           </Text>
@@ -2768,7 +2776,7 @@ function App() {
               Signature
             </Text>
           </View>
-          <Image style={styles.imageBorderFull} src={BorderImageFull} />
+         
         </View>
         <View style={styles.sectionTitleCustom}>
           <Text style={styles.mainTitle}>DOCUMENTS TO BE SUBMITTED </Text>
@@ -2856,6 +2864,7 @@ function App() {
               <View style={styles.mininRectangle}></View>
             </View>
           </View>
+          <Image style={styles.imageBorderFull} src={BorderImageFull} />
           <View style={styles.mainBoxSignatureDocuments}>
             <View></View>
             <View style={styles.borderBoxSignatureCustom}>
@@ -2925,7 +2934,6 @@ function App() {
             </View>
           </View>
         </View>
-        <Image style={styles.imageBorderFull} src={BorderImageFull} />
         <View style={styles.sectionTitleCustom}>
           <Text style={styles.mainTitle}>TO BE FILLED BY THE OFFICE </Text>
           <View style={styles.mainFillByOffice}>
@@ -3009,15 +3017,15 @@ function App() {
           <View style={styles.colEightRound}>
             <Image style={styles.imageEightRound} src={EightRound} />
           </View>
-
+          <Image style={styles.imageBorderFull} src={BorderImageFull} />
         </View>
         <View style={styles.sectionTitleCustom}>
           <View style={styles.colImageBottom}>
             <Image style={styles.imageLogoBottom} src={Logo} />
-           
+
           </View>
           <Text style={styles.textFirstBottomCustomFirst}>
-              Address
+            Address
           </Text>
           <Text style={styles.textFirstBottomCustomFirst}>
             Bloomingdale International School
